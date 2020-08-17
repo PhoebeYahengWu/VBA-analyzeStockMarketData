@@ -3,6 +3,19 @@
 ## Start File
 ![image](https://user-images.githubusercontent.com/52837649/90347008-8044cf80-dffb-11ea-9788-6677db51c4de.png)
 
+## Task
+1. Loop through all the stocks for one year and output the following information:
+
+- The ticker symbol
+
+- Yearly change from opening price at the beginning of a given year to the closing price at the end of that year
+
+- The percent change from opening price at the beginning of a given year to the closing price at the end of that year
+
+- The total stock volume of the stock
+
+2. Add conditional formatting that highlights positive change in green and negative change in red
+
 ## Finished File
 ![image](https://user-images.githubusercontent.com/52837649/90348143-80949900-e002-11ea-91b7-8dc8a309c306.png)
 
