@@ -16,6 +16,8 @@
 
 2. Add conditional formatting that highlights positive change in green and negative change in red
 
+3. Summarize the greatest % increase, the greatest % decrease and the greatest total volume
+
 ## Finished File
 ![image](https://user-images.githubusercontent.com/52837649/90348143-80949900-e002-11ea-91b7-8dc8a309c306.png)
 
