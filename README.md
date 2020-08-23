@@ -3,8 +3,23 @@
 ## Start File
 ![image](https://user-images.githubusercontent.com/52837649/90347008-8044cf80-dffb-11ea-9788-6677db51c4de.png)
 
+## Task
+1. Loop through all the stocks for one year and output the following information:
+
+- The ticker symbol
+
+- Yearly change from opening price at the beginning of a given year to the closing price at the end of that year
+
+- The percent change from opening price at the beginning of a given year to the closing price at the end of that year
+
+- The total stock volume of the stock
+
+2. Add conditional formatting that highlights positive change in green and negative change in red
+
+3. Summarize the greatest % increase, the greatest % decrease and the greatest total volume
+
 ## Finished File
-![image](https://user-images.githubusercontent.com/52837649/90348143-80949900-e002-11ea-91b7-8dc8a309c306.png)
+![image](https://user-images.githubusercontent.com/52837649/90968571-a830a900-e4bb-11ea-99e1-5da5e1b6b832.png)
 
 ## Code
 ```
@@ -16,6 +31,7 @@ Dim closePrice As Double
 Dim yearlyChange As Double
 Dim percentChange As Double
 Dim totalVolume As Double
+Dim openPriceRow As Long
 
 
 totalVolume = 0
@@ -37,6 +53,7 @@ For Each ws In Worksheets
     ws.Range("O4").Value = "Greatest Total Volume"
 
     summary_table_row = 2
+    openPriceRow = 2
 
     lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
     
@@ -48,13 +65,20 @@ For Each ws In Worksheets
         
             ticker = ws.Cells(i, 1).Value
             
-            openPrice = ws.Cells(i - 260, 3).Value
+            openPrice = ws.Cells(openPriceRow, 3).Value
             
             closePrice = ws.Cells(i, 6).Value
             
             yearlyChange = closePrice - openPrice
             
-            percentChange = (closePrice - openPrice) / openPrice
+            
+            If openPrice = 0 Then
+            
+                percentChange = 0
+            Else
+                
+                percentChange = yearlyChange / openPrice
+            End If
             
             
             totalVolume = totalVolume + ws.Cells(i, 7).Value
@@ -76,6 +100,8 @@ For Each ws In Worksheets
             ws.Range("L" & summary_table_row).Value = totalVolume
             
             summary_table_row = summary_table_row + 1
+            
+            openPriceRow = i + 1
             
             totalVolume = 0
         Else
@@ -128,5 +154,4 @@ For Each ws In Worksheets
 Next ws
 
 End Sub
-
 ```
