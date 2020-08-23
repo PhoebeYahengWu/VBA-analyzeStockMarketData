@@ -31,6 +31,7 @@ Dim closePrice As Double
 Dim yearlyChange As Double
 Dim percentChange As Double
 Dim totalVolume As Double
+Dim openPriceRow As Long
 
 
 totalVolume = 0
@@ -52,6 +53,7 @@ For Each ws In Worksheets
     ws.Range("O4").Value = "Greatest Total Volume"
 
     summary_table_row = 2
+    openPriceRow = 2
 
     lastRow = ws.Cells(Rows.Count, 1).End(xlUp).Row
     
@@ -63,13 +65,20 @@ For Each ws In Worksheets
         
             ticker = ws.Cells(i, 1).Value
             
-            openPrice = ws.Cells(i - 260, 3).Value
+            openPrice = ws.Cells(openPriceRow, 3).Value
             
             closePrice = ws.Cells(i, 6).Value
             
             yearlyChange = closePrice - openPrice
             
-            percentChange = (closePrice - openPrice) / openPrice
+            
+            If openPrice = 0 Then
+            
+                percentChange = 0
+            Else
+                
+                percentChange = yearlyChange / openPrice
+            End If
             
             
             totalVolume = totalVolume + ws.Cells(i, 7).Value
@@ -91,6 +100,8 @@ For Each ws In Worksheets
             ws.Range("L" & summary_table_row).Value = totalVolume
             
             summary_table_row = summary_table_row + 1
+            
+            openPriceRow = i + 1
             
             totalVolume = 0
         Else
@@ -143,5 +154,7 @@ For Each ws In Worksheets
 Next ws
 
 End Sub
+
+
 
 ```
