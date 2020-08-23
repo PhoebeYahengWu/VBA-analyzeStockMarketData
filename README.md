@@ -19,7 +19,7 @@
 3. Summarize the greatest % increase, the greatest % decrease and the greatest total volume
 
 ## Finished File
-![image](https://user-images.githubusercontent.com/52837649/90348143-80949900-e002-11ea-91b7-8dc8a309c306.png)
+![image](https://user-images.githubusercontent.com/52837649/90968571-a830a900-e4bb-11ea-99e1-5da5e1b6b832.png)
 
 ## Code
 ```
@@ -154,7 +154,4 @@ For Each ws In Worksheets
 Next ws
 
 End Sub
-
-
-
 ```
